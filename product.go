@@ -1,16 +1,13 @@
 package main
-
 type Product struct {
 	Name, Category string
 	Price          float64
 }
-
 var Kayak = Product{
 	Name:     "Kayak",
 	Category: "Watersports",
 	Price:    279,
 }
-
 var Products = []Product{
 	{"Kayak", "Watersports", 279},
 	{"Lifejacket", "Watersports", 49.95},
