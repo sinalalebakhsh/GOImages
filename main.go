@@ -1,47 +1,30 @@
 package main
+
 import (
 	// "fmt"
 	// "time"
 	"encoding/json"
 	"os"
+	"path/filepath"
 )
+
 func main() {
-	cheapProducts := []Product{}
-	for _, p := range Products {
-		if p.Price < 100 {
-			cheapProducts = append(cheapProducts, p)
+	path, err := os.UserHomeDir()
+	if err == nil {
+		path = filepath.Join(path, "0-Repo/TEST-2/MyApp", "MyTempFile.json")
+		
+	}
+	Printfln("Full path: %v", path)
+	err = os.MkdirAll(filepath.Dir(path), 0766)
+	if err == nil {
+		file, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0666)
+		if err == nil {
+			defer file.Close()
+			encoder := json.NewEncoder(file)
+			encoder.Encode(Products)
 		}
 	}
-	file, err := os.OpenFile("cheap.json", os.O_WRONLY|os.O_CREATE, 0666)
-	if err == nil {
-		defer file.Close()
-		encoder := json.NewEncoder(file)
-		encoder.Encode(cheapProducts)
-	} else {
-		Printfln("Error: %v", err.Error())
+	if err != nil {
+		Printfln("Error %v", err.Error())
 	}
 }
-
-/*package main
-import (
-	// "fmt"
-	// "time"
-	"os"
-	"encoding/json"
-)
-func main() {
-	cheapProducts := []Product {}
-	for _, p := range Products {
-		if (p.Price < 100) {
-			cheapProducts = append(cheapProducts, p)
-		}
-	}
-	file, err := os.CreateTemp(".", "tempfile-*.json")
-	if (err == nil) {
-		defer file.Close()
-		encoder := json.NewEncoder(file)
-		encoder.Encode(cheapProducts)
-	} else {
-		Printfln("Error: %v", err.Error())
-	}
-}*/
