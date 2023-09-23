@@ -1,1 +1,6 @@
 <h1>Template Value: {{ . }}</h1>
+<h1>Name: {{ .Name }}</h1>
+<h1>Category: {{ .Category }}</h1>
+<h1>Price: {{ printf "$%.3f" .Price }}</h1>
+<h1>Tax: {{ printf "$%.2f" .AddTax }}</h1>
+<h1>Discount Price: {{ .ApplyDiscount 10 }}</h1>

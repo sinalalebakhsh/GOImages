@@ -1,8 +1,10 @@
 package main
+
 import (
 	"html/template"
 	"os"
 )
+
 func Exec(t *template.Template) error {
 	return t.Execute(os.Stdout, &Kayak)
 }
@@ -12,8 +14,9 @@ func main() {
 		selectedTemplated := allTemplates.Lookup("template.html")
 		err = Exec(selectedTemplated)
 	}
+
+	
 	if err != nil {
 		Printfln("Error: %v %v", err.Error())
 	}
 }
-<h1>Template Value: {Kayak Watersports 279}</h1>
