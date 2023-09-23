@@ -1,30 +1,19 @@
 package main
-
 import (
-	// "fmt"
-	// "time"
-	"encoding/json"
+	"html/template"
 	"os"
-	"path/filepath"
 )
-
+func Exec(t *template.Template) error {
+	return t.Execute(os.Stdout, &Kayak)
+}
 func main() {
-	path, err := os.UserHomeDir()
+	allTemplates, err := template.ParseGlob("templates/*.html")
 	if err == nil {
-		path = filepath.Join(path, "0-Repo/TEST-2/MyApp", "MyTempFile.json")
-		
-	}
-	Printfln("Full path: %v", path)
-	err = os.MkdirAll(filepath.Dir(path), 0766)
-	if err == nil {
-		file, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0666)
-		if err == nil {
-			defer file.Close()
-			encoder := json.NewEncoder(file)
-			encoder.Encode(Products)
-		}
+		selectedTemplated := allTemplates.Lookup("template.html")
+		err = Exec(selectedTemplated)
 	}
 	if err != nil {
-		Printfln("Error %v", err.Error())
+		Printfln("Error: %v %v", err.Error())
 	}
 }
+<h1>Template Value: {Kayak Watersports 279}</h1>
