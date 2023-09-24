@@ -1,6 +1,7 @@
-<h1>Template Value: {{ . }}</h1>
-<h1>Name: {{ .Name }}</h1>
-<h1>Category: {{ .Category }}</h1>
-<h1>Price: {{ printf "$%.3f" .Price }}</h1>
-<h1>Tax: {{ printf "$%.2f" .AddTax }}</h1>
-<h1>Discount Price: {{ .ApplyDiscount 10 }}</h1>
+{{ define "mainTemplate" -}}
+    <h1>This is the layout header</h1>
+    {{ block "body" . }}
+        <h2>There are {{ len . }} products in the source data.</h2>
+    {{ end }}
+    <h1>This is the layout footer</h1>
+{{ end }}
