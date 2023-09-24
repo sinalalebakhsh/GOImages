@@ -1,21 +1,7 @@
-<<<<<<< HEAD
 {{ define "mainTemplate" -}}
     <h1>This is the layout header</h1>
     {{ block "body" . }}
         <h2>There are {{ len . }} products in the source data.</h2>
     {{ end }}
     <h1>This is the layout footer</h1>
-=======
-<h1>There are {{ len . }} products in the source data.</h1>
-<h1>First product: {{ index . 0 }}</h1>
-{{ range . -}}
-    {{ if lt .Price 100.00 -}}
-        <h1>Name: {{ .Name }}, Category: {{ .Category }}, Price,
-            {{- printf "$%.2f" .Price }}</h1>
-    {{ else if gt .Price 1500.00 -}}
-        <h1>Expensive Product {{ .Name }} ({{ printf "$%.2f" .Price}})</h1>
-    {{ else -}}
-        <h1>Midrange Product: {{ .Name }} ({{ printf "$%.2f" .Price}})</h1>
-    {{ end -}}
->>>>>>> 7b4c027163dc1f853bf991607943a95b615ddff6
 {{ end }}
