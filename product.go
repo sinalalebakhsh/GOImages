@@ -5,11 +5,6 @@ type Product struct {
 	Price          float64
 }
 
-var Kayak = Product{
-	Name:     "Kayak",
-	Category: "Watersports",
-	Price:    279,
-}
 var Products = []Product{
 	{"Kayak", "Watersports", 279},
 	{"Lifejacket", "Watersports", 49.95},
@@ -19,11 +14,4 @@ var Products = []Product{
 	{"Thinking Cap", "Chess", 16},
 	{"Unsteady Chair", "Chess", 75},
 	{"Bling-Bling King", "Chess", 1200},
-}
-
-func (p *Product) AddTax() float64 {
-	return p.Price * 1.2
-}
-func (p *Product) ApplyDiscount(amount float64) float64 {
-	return p.Price - amount
 }
