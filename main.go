@@ -6,39 +6,22 @@ import (
 type StringHandler struct {
 	message string
 }
-
-
+func (sh StringHandler) ServeHTTP(writer http.ResponseWriter,
+		request *http.Request) {
+	Printfln("Request for %v", request.URL.Path)
+	io.WriteString(writer, sh.message)
+}
 
 func main() {
+	http.Handle("/message", StringHandler{ "Hello, World"})
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.Handle("/", http.RedirectHandler("/message", http.StatusTemporaryRedirect))
 
+	fsHandler := http.FileServer(http.Dir("./static"))
+	http.Handle("/files/", http.StripPrefix("/files", fsHandler))
 
-	MyServer()
-
-}
-
-func MyServer() {
-	logFile, err := os.OpenFile("LogFile/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		log.Fatal(err)
+	err := http.ListenAndServe(":5000", nil)
+	if (err != nil) {
+		Printfln("Error: %v", err.Error())
 	}
-	defer logFile.Close()
-	log.SetOutput(logFile)
-
-	
-	err = http.ListenAndServe(":5000", StringHandler{message: "Hello, World"})
-	if err != nil {
-		log.Printf("Error: %v", err.Error())
-	}
-}
-
-func (sh StringHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	log.Printf("Method: %v", request.Method)
-	log.Printf("URL: %v", request.URL)
-	log.Printf("HTTP Version: %v", request.Proto)
-	log.Printf("Host: %v", request.Host)
-	for name, val := range request.Header {
-		log.Printf("Header: %v, Value: %v", name, val)
-	}
-	io.WriteString(writer, sh.message)
-	log.Printf("============================================◉🧭🧭🧭🧭🧭🧭🧭◉==========================================")
 }
