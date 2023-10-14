@@ -13,7 +13,9 @@ func main() {
 	var builder strings.Builder
 	err := json.NewEncoder(&builder).Encode(Products[0])
 	if (err == nil) {
-		response, err := http.Post("http://localhost:5000/echo", "application/json",strings.NewReader(builder.String()))
+		response, err := http.Post("http://localhost:5000/echo",
+			"application/json",
+			strings.NewReader(builder.String()))
 		if (err == nil && response.StatusCode == http.StatusOK) {
 			io.Copy(os.Stdout, response.Body)
 			defer response.Body.Close()
