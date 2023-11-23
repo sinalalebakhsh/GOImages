@@ -1,0 +1,27 @@
+command:
+    bee new FirstApp
+
+Output:
+    2023/11/23 15:11:41.455 [D]  init global config instance failed. If you do not use this, just ignore it.  open conf/app.conf: no such file or directory
+    2023/11/23 15:11:41 INFO     ▶ 0001 Generate new project support go modules.
+    2023/11/23 15:11:41 INFO     ▶ 0002 Creating application...
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/go.mod
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/conf/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/controllers/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/models/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/routers/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/tests/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/static/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/static/js/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/static/css/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/static/img/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/views/
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/conf/app.conf
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/controllers/default.go
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/views/index.tpl
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/routers/router.go
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/tests/default_test.go
+            create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/main.go
+    2023/11/23 15:11:41 SUCCESS  ▶ 0003 New application successfully created!
+    
