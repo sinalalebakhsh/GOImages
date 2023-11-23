@@ -1,4 +1,6 @@
 #!/bin/bash
 git add .
-git commit -m " Start Beego framework of GOlang. have good time "
+git commit -m " 
+1- go run 
+2- go get FirstApp"
 git push -u origin main 
