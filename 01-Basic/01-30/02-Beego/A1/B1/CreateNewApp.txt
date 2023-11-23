@@ -25,3 +25,7 @@ Output:
             create   /home/sina/01-Repo/0 WAGO/01-Basic/01-30/02-Beego/A1/B1/FirstApp/main.go
     2023/11/23 15:11:41 SUCCESS  ▶ 0003 New application successfully created!
     
+
+2- bee run
+
+3- go get FirstApp
