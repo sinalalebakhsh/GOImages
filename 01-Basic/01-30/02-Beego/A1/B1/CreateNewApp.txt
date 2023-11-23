@@ -28,4 +28,11 @@ Output:
 
 2- bee run
 
-3- go get FirstApp
+if got error:
+    3- go get FirstApp
+
+4- bee run
+
+if got error:
+    5- go get -u golang.org/x/sys
+
