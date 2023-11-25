@@ -1,4 +1,4 @@
-package main
+package cms
 
 import (
 	"html/template"
@@ -6,7 +6,10 @@ import (
 
 // Templ is an exported variable. 
 // Templ is stand for Templates
-var Templ = template.Must(template.ParseGlob("/templates/*"))
+var Templ = template.Must(template.ParseGlob("../templates/*"))
 
-func main()  {
+
+type Page struct {
+	Title string
+	Content string
 }
