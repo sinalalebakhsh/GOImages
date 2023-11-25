@@ -11,5 +11,5 @@
     "googleTranslateExt.languages": [
         "fa"
     ],
-    "workbench.iconTheme": "bearded-icons",
+    "workbench.iconTheme": "material-icon-theme",
   }
