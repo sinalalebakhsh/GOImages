@@ -19,6 +19,7 @@
   "go.toolsManagement.autoUpdate": true,
   "window.zoomLevel": -1,
   "workbench.activityBar.location": "top"
+  
 }
 // {
 //   "window.titleBarStyle": "custom",
