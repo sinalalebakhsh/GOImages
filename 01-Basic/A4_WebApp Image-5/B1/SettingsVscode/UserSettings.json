@@ -1,0 +1,27 @@
+{
+    "html.suggest.html5": true,
+    "window.titleBarStyle": "custom",
+    "workbench.activityBar.location": "top",
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorTheme": "Bearded Theme Vivid Black",
+    "editor.tokenColorCustomizations": {
+        "comments": "#ff00aa"
+      },
+    "workbench.colorCustomizations": {
+      "editor.selectionBackground": "#003aff",
+      "statusBar.background": "#7C21D7",
+      "titleBar.activeBackground": "#4b0076",
+      "titleBar.activeForeground":"#ffffff",
+      
+    },
+  "editor.mouseWheelZoom": true,
+  "explorer.confirmDelete": false,
+  "window.zoomLevel": 0.3,
+  "workbench.iconTheme": "bearded-icons",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "editor.snippetSuggestions": "bottom",
+  "emmet.showSuggestionsAsSnippets": true,
+  
+}
+
