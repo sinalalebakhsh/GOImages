@@ -1,15 +1,26 @@
 {
-    "workbench.colorTheme": "Bearded Theme Vivid Black",
-    "files.autoSave": "afterDelay",
-    "workbench.colorCustomizations": {
-      "editor.selectionBackground": "#003aff"
-    },
-    "editor.tokenColorCustomizations": {
-      "comments": "#ffee00"
-    },
-    "explorer.confirmDelete": false,
-    "googleTranslateExt.languages": [
-        "fa"
-    ],
-    "workbench.iconTheme": "icons",
-  }
+  "workbench.colorTheme": "Bearded Theme Vivid Black",
+  "files.autoSave": "afterDelay",
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#003aff",
+    "statusBar.background": "#7C21D7",
+    "titleBar.activeBackground": "#4b0076",
+    "titleBar.activeForeground":"#ffffff",
+    
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": "#ff00aa"
+  },
+  "explorer.confirmDelete": false,
+  "workbench.iconTheme": "bearded-icons",
+  "explorer.confirmDragAndDrop": false,
+  "editor.mouseWheelZoom": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "go.toolsManagement.autoUpdate": true,
+  "window.zoomLevel": -1,
+  "workbench.activityBar.location": "top"
+}
+// {
+//   "window.titleBarStyle": "custom",
+//   "workbench.activityBar.location": "top"
+// }
