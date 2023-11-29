@@ -1,0 +1,20 @@
+{{template "base" .}}
+
+{{define "content"}}
+
+    <h1 class="mt-3">Make New Post</h1>
+    <form action="" method="post" class="needs-valitation" novalidate>
+        <div class="from-group mt-3">
+            <label for="blog_title">Title:</label>
+            <input class="form-control" id="blog_title" autocomplete="off" type="text" name="blog_title" value="" required>
+        </div>
+        <div class="from-group mt-3">
+            <label for="blog_article">Article:</label>
+            <textarea class="form-control" id="blog_article" autocomplete="off" type="text" name="blog_article" value="" required rows="15">
+            </textarea>
+        </div>
+        <hr>
+        <input type="submit" class="btn btn-primary" value="Confirm Post">
+    </form>
+
+{{end}}
