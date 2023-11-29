@@ -34,6 +34,6 @@ is like docker images, you can use and download for free.
 <br>
 
 
-<p>Golang Teachers:<br>derek banas </p>
+<p>Golang Teachers:<br>derek banas<br>AdamFreeman</p>
 
 
