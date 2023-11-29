@@ -33,11 +33,14 @@ is like docker images, you can use and download for free.
 
 <br>
 
-
-<p>Golang Teachers:
-  <br>derek banas
-  <br>Adam Freeman
-  <br>Adam Freeman
-</p>
+<details>
+  <summary>
+    <h2>Golang Teachers:</h2>
+  </summary>
+  <p>
+    <br>derek banas
+    <br>Adam Freeman
+  </p>
+</details>
 
 
