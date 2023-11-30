@@ -17,7 +17,7 @@
   "editor.mouseWheelZoom": true,
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "go.toolsManagement.autoUpdate": true,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": -1,
   "workbench.activityBar.location": "top"
   
 }
