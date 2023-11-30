@@ -2,7 +2,7 @@
 
 is like docker images, you can use and download for free.
 
-
+<!-- 
 <details>
   <summary>
     <h1>🔻🔻 Demo and Image Version</h>
@@ -29,7 +29,7 @@ is like docker images, you can use and download for free.
       <img src="" width="250" alt="Image">
     </p>
   </details>
-</details> 
+</details>  -->
 
 <hr>
 
