@@ -1,0 +1,25 @@
+{{template "base" .}}
+{{define "content"}}
+{{$res := index .Data "article"}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">Article Received</h1>
+                <hr>
+                <table class="table">
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <td>{{$res.BlogTitle}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{$res.BlogArticle}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{{end}}
