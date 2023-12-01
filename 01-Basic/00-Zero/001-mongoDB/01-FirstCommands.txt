@@ -1,3 +1,7 @@
+sudo mongod --config /etc/mongod.conf
+mongosh
+
+
 Terminal:
 Database lists: 
     show dbs
@@ -41,6 +45,18 @@ Delete current DataBase:
     1- use DataBaseName
     2- DataBaseName> db.dropDatabase()
     Result: DataBaseName deleted
+
+
+Create a record:
+    db.NameDataBase.insertOne({name: "Sina", surname: "LalehBakhsh"})
+
+Create several records:
+    db.NameDataBase.insertMany([{},{},{},{}])
+    e.g:
+        db.NameDataBase.insertMany([{name:"Sina", surname:"LalehBakhsh"},{name:"Jina", surname:"Mehrzad"},{name:"", surname:""},{name:"AnotherUserName", surname:"SurNameIsLaleh"}])
+
+find:
+    db.NameDataBase.find()
 
 
 
