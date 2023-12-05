@@ -1,0 +1,20 @@
+Explaination of config.json inside this file:
+    This configuration file defines two configuration sections, named logging and main. The logging
+    section contains a single string configuration setting, named level. The main section contains a single
+    string configuration setting named message.
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+source: https://www.freecodecamp.org/news/comments-in-json/
+Why JSON Does Not Support Comments?
+According to the JSON specification, 
+a JSON document should only contain data structures like arrays 
+and objects and not include comments. 
+This is because JSON is intended to be a simple, 
+easily parsable data format that can be quickly and efficiently processed.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
