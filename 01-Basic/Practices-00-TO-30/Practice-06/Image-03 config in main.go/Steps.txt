@@ -1,0 +1,61 @@
+Create Project
+1-  go mod init platform
+2-  touch main.go
+3-  go run .
+
+Creating the Logging System
+4-  logging/logging.go
+5-  add content to logging.go
+
+To create the default implementation of the Logger interface
+6-  logging/logger_default.go
+7-  add content to logger_default.go
+
+Create:
+8-  logging/default_create.go
+9-  add content to default_create.go
+
+As a simple test:
+Using the Logging Feature in the main.go
+10- Change content in main.go 
+11- Compile and execute
+
+
+Creating the Configuration System:
+12- config/config.go
+13- add Contents of the config.go
+
+Defining the Configuration File:
+14- Current-Project-Directory/config.json
+15- Add Contents of the config.json
+
+Implementing the Configuration Interface:
+16- config/config_default.go
+17- Add Contents of the config_default.go
+
+To define the methods that accept a default value:
+18- config/config_default_fallback.go
+19- Add Contents of the config_default_fallback.go
+
+To define the function that will load the data from the configuration file:
+20- config/config_json.go 
+21- Add Contents of the config_json.go
+
+
+Using the Configuration System:
+To obtain the logging level from the configuration system, make the changes to the
+default_create.go file in the logging folder.
+22- Change CONTENTS in the default_create.go File in the logging Folder
+
+
+updates the main function to load and apply the configuration data 
+and to use the configuration system to read the message that it writes out.
+23- Reading Configuration Settings in the main.go File
+24- go run .  OUPUT-> 02:25:40 INFO Hello from the config file
+
+
+
+
+
+
+
