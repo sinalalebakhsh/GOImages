@@ -1,0 +1,10 @@
+1-  go mod init platform
+2-  touch main.go
+3-  go run .
+
+
+
+
+
+
+
