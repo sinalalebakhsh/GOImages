@@ -1,0 +1,7 @@
+BEDMAS
+BEDMAS, standing for 
+    Brackets, 
+    Exponents, 
+    Division/Multiplication, 
+    Addition/Subtraction 
+is common in Canada and New Zealand.
