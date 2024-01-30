@@ -1,0 +1,56 @@
+================================================
+1- Add this into main.go
+import (
+	"fmt"
+	"bufio"
+	"os"
+	// "strconv"
+)
+================================================
+2- Add this in main() {...here...} function
+scanner := bufio.NewScanner(os.Stdin)
+================================================
+3- Add this in main() {...here...} function after scanner object
+scanner.Scan()
+================================================
+4- Add this in main() {...here...} function after scanner.Scan()
+input := scanner.Text()
+================================================
+5- Add this in main() {...here...} function after input variable
+fmt.Printf("You typed %q", input)
+================================================
+6- in terminal
+go run main.go 
+
+Output:
+    Sina LalehBakhsh
+    You typed "Sina LalehBakhsh"sina@linux:~/01-Repo/Tests/11-Tim$ 
+
+This is for Terminal is sticked to end sentence:
+sina@linux:~/01-Repo/Tests/11-Tim$ 
+================================================
+7- Add this in main() {...here...} function before scanner.Scan()
+...
+fmt.Printf("Type anything: ")
+scanner.Scan()
+...	
+================================================
+8- in terminal
+go run main.go 
+
+Output:
+    Type anything: Sina
+    You typed "Sina"sina@linux:~/01-Repo/Tests/11-Tim$ 
+================================================
+9- 
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
