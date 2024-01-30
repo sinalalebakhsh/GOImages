@@ -42,10 +42,44 @@ Output:
     Type anything: Sina
     You typed "Sina"sina@linux:~/01-Repo/Tests/11-Tim$ 
 ================================================
-9- 
+9- Change this line in main.go
+...
+scanner := bufio.NewScanner(os.Stdin)
+/*here*/fmt.Printf("Type the year you were born: ") 
+...
 ================================================
+10- Change this line in main.go
+...
+input := scanner.Text()
+/*here*/fmt.Printf("You will be  %d years old at the end of 2030", 2030 - input)
+...
+
+Output:
+You got an error at the end of like this:
+    invalid operation: 2030 - input (mismatched types untyped int and string)compilerMismatchedTypes
 ================================================
+11- uncomment this in main.go
+// "strconv"
+"strconv"
 ================================================
+12- change this line in main.go
+input := strconv.ParseInt(scanner.Text(), 10, 64) 
+
+Output:
+You got an error at the end of like this:
+    assignment mismatch: 1 variable but strconv.ParseInt returns 2 valuescompilerWrongAssignCount
+================================================
+13- change this line in main.go
+input, _ := strconv.ParseInt(scanner.Text(), 10, 64) 
+================================================
+14- in Terminal
+go run main.go 
+
+Output:
+    Type the year you were born: 1993
+    You will be  37 years old at the end of 2030
+================================================
+
 ================================================
 ================================================
 ================================================
