@@ -1,0 +1,7 @@
+Lifecycle   Description
+---------   -----------------------------
+Transient   For this lifecycle, the factory function is invoked for every service request.
+Singleton   For this lifecycle, the factory function is invoked once, and every request receives the same
+            struct instance.
+Scoped      For this lifecycle, the factory function is invoked once for the first request within a scope, and
+            every request within that scope receives the same struct instance.
