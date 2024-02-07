@@ -1,0 +1,406 @@
+1- in Terminal
+touch main.go
+================================================
+2- in Terminal
+go mod init github.com/sinalalebakhsh
+================================================
+3- in Terminal
+go get github.com/gin-gonic/gin
+Output:
+    go: added github.com/bytedance/sonic v1.9.1
+    ...
+================================================
+4- import into main.go
+import (
+	"net/http"
+	"github.com/gin-gonic/gin"
+)
+================================================
+5- create book struct
+type book struct {
+	/* Upper case is for exported to another modules */
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Author   string `json:"author"`
+	Quantity int `json:"quantity"`
+}
+================================================
+6- Add object of books
+var books = []book{
+	{ID:"1", Title:"In Search of Lost Time", Author:"Marcel Proust", Quantity: 2},
+	{ID:"2", Title:"The Great Gatsby", Author:"F. Scott Fitzgerald", Quantity: 5},
+	{ID:"3", Title:"War and Peace", Author:"Leo Tolstoy", Quantity: 2},
+	{ID:"4", Title:"The Little Prince", Author:"Antoine de Saint-Exupéry", Quantity: 5},
+}
+================================================
+7- Add func main
+func main() {
+}
+================================================
+8- Create this inside main()
+router := gin.Default()
+================================================
+9- Create this function outside main()
+// This function return a json version of books variable  
+func getBooks(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, books)
+}
+================================================
+10- add this inside of main(), after router variable
+...
+router.GET("/books", getBooks)
+router.Run("localhost:8080")
+================================================
+11- in Terminal
+go run main.go
+OR
+go run .
+================================================
+12- in another Terminal
+curl localhost:8080/books
+
+Output should be like this:
+    [
+        {
+            "id": "1",
+            "title": "In Search of Lost Time",
+            "author": "Marcel Proust",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "quantity": 4
+        },
+        {
+            "id": "3",
+            "title": "War and Peace",
+            "author": "Leo Tolstoy",
+            "quantity": 3
+        },
+        {
+            "id": "4",
+            "title": "The Little Prince",
+            "author": "Antoine de Saint-Exupéry",
+            "quantity": 5
+        }
+    ]
+
+================================================
+13- in First Terminal should got this
+...
+[GIN] 2024/02/06 - 13:50:48 | 200 |      66.434µs |       127.0.0.1 | GET      "/books"
+...
+================================================
+14- Press Ctrl + C for end process server in Terminal
+================================================
+15- Create new function for POST data
+
+// This function Create new book and add it into "books" objects
+func createBook(c *gin.Context) {
+	var newBook book
+
+	if err := c.BindJSON(&newBook); err != nil {
+		return
+	}
+
+	books = append(books, newBook)
+	c.IndentedJSON(http.StatusOK, newBook)
+}
+================================================
+16- add this line after router.GET... inside main()
+router.GET("/books", getBooks)
+router.POST("/books", createBook)
+...
+================================================
+17- in Terminal
+go run main.go
+OR
+go run .
+================================================
+18- Create a file in current directory project
+body.json
+================================================
+19- content of body.json
+{
+    "id": "4",
+    "title": "The Tragedy of Hamlet",
+    "author": "William Shakespeare",
+    "quantity": 2
+}
+================================================
+20- in another Terminal (in first Terminal server have to running)
+curl localhost:8080/books --include --header "Content-Type: application/json" -d @body.json --request "POST"
+
+Output should be like this:
+    HTTP/1.1 200 OK
+    Content-Type: application/json; charset=utf-8
+    Date: Tue, 06 Feb 2024 19:18:56 GMT
+    Content-Length: 111
+
+    {
+        "id": "4",
+        "title": "The Tragedy of Hamlet",
+        "author": "William Shakespeare",
+        "quantity": 2
+    }
+
+================================================
+21- in First Terminal output should be like this
+[GIN] 2024/02/06 - 14:18:56 | 200 |     178.903µs |       127.0.0.1 | POST     "/books"
+================================================
+22- in second Terminal use this command again and make sure new book added
+curl localhost:8080/books
+
+Output: new book was added
+    [
+        {
+            "id": "1",
+            "title": "In Search of Lost Time",
+            "author": "Marcel Proust",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "quantity": 4
+        },
+        {
+            "id": "3",
+            "title": "War and Peace",
+            "author": "Leo Tolstoy",
+            "quantity": 3
+        },
+        {
+            "id": "4",
+            "title": "The Little Prince",
+            "author": "Antoine de Saint-Exupéry",
+            "quantity": 5
+        },
+        {
+            "id": "4",
+            "title": "The Tragedy of Hamlet",
+            "author": "William Shakespeare",
+            "quantity": 2
+        }
+    ]
+
+================================================
+23- import this in first main.go after imports
+import (
+    ...
+	"errors"
+)
+================================================
+24- Create new function for helping to getting books by id before main()
+// This function have to helps for getting books by id
+func getBookById(id string) (*book, error) {
+	for i, b := range books {
+		if b.ID == id {
+			return &books[i], nil
+		}
+	}
+	return nil, errors.New("book not found")
+}
+================================================
+25- Create new function before getBookById()
+// This function uses getBookById() function
+func bookById(c *gin.Context) {
+	id := c.Param("id")
+	// example: "/books/2"
+
+	book, err := getBookById(id)
+	// err Stand for error
+
+	// nil is like empty glass of wine,
+	// if is empty so person is sober,
+	// on the contrary person is drunk!! and glass IS NOT EMPTY != False not nil
+	if err != nil {
+        // We have to create custom message for error arising in here
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Book not found!"})
+    	return
+	}
+
+	c.IndentedJSON(http.StatusOK, book)
+}
+================================================
+26- add this line after router.GET... inside main()
+...
+router.GET("/books", getBooks)
+// id := c.Param("id")
+// This uses in here
+router.GET("/books/:id", bookById)
+...
+================================================
+27- Restart API by Ctrl+C and write again this command in Terminal
+go run main.go
+OR
+go run .
+================================================
+28- in another Terminal , Test a id book doesn't exist
+curl localhost:8080/books/999 
+
+Output should be like this:
+    {
+        "message": "Book not found!"
+    }
+================================================
+29- in first Terminal , Server was running should got this 
+[GIN] 2024/02/06 - 15:01:09 | 404 |      66.842µs |       127.0.0.1 | GET      "/books/999"
+================================================
+
+    CHECK OUT BOOKS AND QUERY PARAMETERS
+
+================================================
+30- Create new function for checkout book, before getBookById() function
+func checkoutBook(c *gin.Context) {
+	id, ok := c.GetQuery("id")
+
+	// Which means if "OK" was equal to false, so that id doesn't exist.
+	if !ok {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing id query parameter."})
+		return
+	}
+
+	book, err := getBookById(id)
+
+	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Book not found!"})
+		return
+	}
+
+	if book.Quantity <= 0 {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Book not available."})
+		return
+	}
+
+	book.Quantity -= 1
+	c.IndentedJSON(http.StatusOK, book)
+}
+================================================
+
+                PATH REQUESTS
+
+================================================
+31- add this line after router.POST... inside main() 
+...
+router.POST("/books", createBook)
+router.PATCH("/checkout", checkoutBook)
+...
+================================================
+32- in Terminal 
+go run main.go
+OR
+go run .
+================================================
+33- in another Terminal use this command for checkout a book
+curl localhost:8080/checkout?id=2 --request "PATCH"
+
+Output should be like this:
+    {
+        "id": "2",
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "quantity": 3
+    }
+================================================
+34- do it again, step 33. Output should be like this: It has decreased in number of quantity
+{
+    "id": "2",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "quantity": 2
+}
+================================================
+35- again third times and check message should like this
+{
+    "message": "Book not available."
+}
+================================================
+36- try a book id doesn't exist in second Terminal, should got this
+curl localhost:8080/checkout?id=999 --request "PATCH"
+
+Output:
+    {
+        "message": "Book not found!"
+    }
+================================================
+37- Try without parameter id should got this
+curl localhost:8080/checkout --request "PATCH"
+
+Output:
+{
+    "message": "Missing id query parameter."
+}
+
+================================================
+Output in First Terminal was running API:
+    [GIN] 2024/02/06 - 15:24:28 | 200 |      83.142µs |       127.0.0.1 | PATCH    "/checkout?id=2"
+    [GIN] 2024/02/06 - 15:24:58 | 200 |      71.887µs |       127.0.0.1 | PATCH    "/checkout?id=2"
+    [GIN] 2024/02/06 - 15:27:32 | 200 |     106.657µs |       127.0.0.1 | PATCH    "/checkout?id=2"
+    [GIN] 2024/02/06 - 15:27:33 | 200 |      72.475µs |       127.0.0.1 | PATCH    "/checkout?id=2"
+    [GIN] 2024/02/06 - 15:27:36 | 400 |      97.256µs |       127.0.0.1 | PATCH    "/checkout?id=2"
+    [GIN] 2024/02/06 - 15:28:49 | 404 |      23.644µs |       127.0.0.1 | PATCH    "/checkout?id=999"
+    [GIN] 2024/02/06 - 15:31:17 | 400 |      55.959µs |       127.0.0.1 | PATCH    "/checkout"
+
+================================================
+
+                RETURNING BOOKS
+
+================================================
+38-  Create new function for returning book before getBookById()
+func returnBook(c *gin.Context) {
+	id, ok := c.GetQuery("id")
+
+	if !ok {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing id query parameter."})
+		return
+	}
+
+	book, err := getBookById(id)
+
+	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Book not found!"})
+		return
+	}
+
+	book.Quantity += 1
+	c.IndentedJSON(http.StatusOK, book)
+}
+================================================
+39- add this line after router.PATCH... inside main()
+...
+router.PATCH("/checkout", checkoutBook)
+router.PATCH("/return", returnBook)
+...
+================================================
+40- Ctrl+C and Restart API in Terminal
+go run main.go
+OR
+go run .
+================================================
+41- in another Terminal
+curl localhost:8080/checkout?id=2 --request "PATCH"
+
+Output:
+    {
+        "id": "2",
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "quantity": 3
+    }
+================================================
+42- in second Terminal 
+curl localhost:8080/return?id=2 --request "PATCH"
+
+Output: It has increased in number of "quantity"
+    {
+        "id": "2",
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "quantity": 4
+    }
+
+================================================
