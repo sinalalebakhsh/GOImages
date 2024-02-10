@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "beardedbear.beardedicons",
+        "beardedbear.beardedtheme",
+        "streetsidesoftware.code-spell-checker",
+        "editorconfig.editorconfig",
+        "tamasfe.even-better-toml",
+        "golang.go",
+        "quillaja.goasm",
+        "goplus.gop",
+        "davidanson.vscode-markdownlint",
+        "mongodb.mongodb-vscode"
+    ]
+}
